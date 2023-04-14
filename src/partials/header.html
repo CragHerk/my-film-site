@@ -1,17 +1,25 @@
 <header class="header">
   <div class="header__content">
     <div class="header__logo">
-      <img src="./images/film-svgrepo-com.svg" alt="Logo" />
+      <img src="./images/film-svgrepo-com.svg" class="header__img" alt="Logo" />
+      <a class="header__filmoteka">Filmoteka</a>
     </div>
     <nav class="header__nav">
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">My library</a></li>
+        <li><a class="header__a" href="#">HOME</a></li>
+        <li><a class="header__a" href="#">MY LIBRARY</a></li>
       </ul>
     </nav>
   </div>
   <form class="header__form">
-    <input type="search" placeholder="Szukaj filmu" />
-    <button type="submit">Szukaj</button>
+    <input type="search" class="search__film" placeholder="Movie search" />
+    <button type="submit" class="header__button">
+      <img
+        src="./images/loupe-search-svgrepo-com.svg"
+        alt="loupe"
+        width="10px"
+        height="10px"
+      />
+    </button>
   </form>
 </header>
