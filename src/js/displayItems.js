@@ -32,7 +32,7 @@ function displayItems(items) {
 
     const movieYear = document.createElement('span');
     movieYear.classList.add('movie-item__year');
-    movieYear.textContent = `Year: ${item.release_date.slice(0, 4)}`;
+    movieYear.textContent = `${item.release_date.slice(0, 4)}`;
 
     const movieRating = document.createElement('span');
     movieRating.classList.add('movie-item__rating');
