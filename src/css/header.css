@@ -13,10 +13,26 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+.header__lib {
+  background-image: url(../images/backgroundlib-small.png);
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  background-size: cover;
+  max-width: 767px;
+  height: 230px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
 @media screen and (min-width: 768px) {
   .header {
     background-image: url(../images/background-medium.png);
+    height: 280px;
+    max-width: 1199px;
+  }
+  .header__lib {
+    background-image: url(../images/backgroundlib-medium.png);
     height: 280px;
     max-width: 1199px;
   }
@@ -25,6 +41,11 @@ body {
 @media screen and (min-width: 1200px) {
   .header {
     background-image: url(../images/background-big.png);
+    height: 350px;
+    max-width: 1500px;
+  }
+  .header__lib {
+    background-image: url(../images/backgroundlib-big.png);
     height: 350px;
     max-width: 1500px;
   }
@@ -77,6 +98,7 @@ body {
   text-decoration-color: red;
   text-decoration-style: solid;
   transition: text-decoration 0.5s ease;
+  text-decoration-thickness: 2px;
 }
 .header__form {
   display: flex;
@@ -108,4 +130,28 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-decoration: none;
+}
+.library__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.library__button {
+  width: 150px;
+  height: 44px;
+  margin-right: 10px;
+  margin-top: 50px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.library__button:hover {
+  background-color: #ff6b02;
 }
