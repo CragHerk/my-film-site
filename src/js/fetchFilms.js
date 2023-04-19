@@ -14,8 +14,8 @@ async function fetchFilms(query) {
 
   const { data } = response;
   const films = data.results;
-
-  return films;
+  const totalResults = data.total_results;
+  return { films, totalResults };
 }
 
 export { fetchFilms };
