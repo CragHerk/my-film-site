@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-async function switchPage(pageNumber, query) {
+async function switchPage(pageNumber, query, buttons) {
   const response = await axios.get(`${BASE_URL}/search/movie`, {
     params: {
       api_key: API_KEY,

@@ -1,6 +1,7 @@
 import { fetchFilms } from './fetchFilms.js';
 import { fetchPageNumbers } from './fetchPageNumers.js';
 import { switchPage } from './switchpages.js';
+
 const resultsPerPage = 20;
 const paginationContainer = document.querySelector('.pagination');
 
@@ -14,33 +15,49 @@ export async function createPaginationButtons() {
   const totalResults = await fetchTotalResults(query);
   const totalPages = Math.ceil(totalResults / resultsPerPage);
   paginationContainer.innerHTML = '';
+  let currentPage = 1;
 
   const pageNumbers = fetchPageNumbers(totalPages, 1);
+
+  const previousButton = document.createElement('button');
+  previousButton.innerHTML = '&laquo;';
+  previousButton.classList.add('pagination__button');
+  previousButton.addEventListener('click', () =>
+    switchPage(currentPage - 1, query, buttons)
+  );
+
+  const nextButton = document.createElement('button');
+  nextButton.innerHTML = '&raquo;';
+  nextButton.classList.add('pagination__button');
+  nextButton.addEventListener('click', () =>
+    switchPage(currentPage + 1, query, buttons)
+  );
 
   const buttons = pageNumbers.map(number => {
     const button = document.createElement('button');
     button.textContent = number;
     button.classList.add('pagination__button');
-    if (number === 1) button.classList.add('active');
-    // Dodaj event listener do każdego przycisku
-    button.addEventListener('click', () => switchPage(number, query));
+    if (number === '...') {
+      button.disabled = true;
+    } else if (number === currentPage) {
+      button.classList.add('active');
+    }
+    button.addEventListener('click', () => {
+      currentPage = number;
+      switchPage(currentPage, query, buttons);
+      buttons.forEach(btn => {
+        if (btn.textContent === currentPage.toString()) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    });
     return button;
   });
 
-  const firstButton = document.createElement('button');
-  firstButton.innerHTML = '&laquo;';
-  firstButton.classList.add('pagination__button');
-  if (pageNumbers[0] === 1) firstButton.disabled = true;
-  firstButton.addEventListener('click', () => switchPage(1, query));
-  buttons.unshift(firstButton);
-
-  const lastButton = document.createElement('button');
-  lastButton.innerHTML = '&raquo;';
-  lastButton.classList.add('pagination__button');
-  if (pageNumbers[pageNumbers.length - 1] === totalPages)
-    lastButton.disabled = true;
-  lastButton.addEventListener('click', () => switchPage(totalPages, query));
-  buttons.push(lastButton);
+  buttons.unshift(previousButton);
+  buttons.push(nextButton);
 
   buttons.forEach(button => paginationContainer.appendChild(button));
 }
