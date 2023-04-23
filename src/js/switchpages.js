@@ -16,6 +16,16 @@ async function switchPage(pageNumber, query, buttons) {
   const { data } = response;
   const films = data.results;
   displayItems(films);
+  updateButtons(pageNumber, buttons);
+}
+function updateButtons(currentPage, buttons) {
+  buttons.forEach(btn => {
+    if (btn.textContent === currentPage.toString()) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
 }
 
 export { switchPage };

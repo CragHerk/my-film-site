@@ -21,17 +21,19 @@ export async function createPaginationButtons() {
 
   const previousButton = document.createElement('button');
   previousButton.innerHTML = '&laquo;';
-  previousButton.classList.add('pagination__button');
-  previousButton.addEventListener('click', () =>
-    switchPage(currentPage - 1, query, buttons)
-  );
+  previousButton.classList.add('pagination__button--prev');
+  previousButton.addEventListener('click', () => {
+    currentPage = Math.max(currentPage - 1, 1);
+    switchPage(currentPage, query, buttons);
+  });
 
   const nextButton = document.createElement('button');
   nextButton.innerHTML = '&raquo;';
-  nextButton.classList.add('pagination__button');
-  nextButton.addEventListener('click', () =>
-    switchPage(currentPage + 1, query, buttons)
-  );
+  nextButton.classList.add('pagination__button--next');
+  nextButton.addEventListener('click', () => {
+    currentPage = Math.min(currentPage + 1, totalPages);
+    switchPage(currentPage, query, buttons);
+  });
 
   const buttons = pageNumbers.map(number => {
     const button = document.createElement('button');
@@ -45,13 +47,6 @@ export async function createPaginationButtons() {
     button.addEventListener('click', () => {
       currentPage = number;
       switchPage(currentPage, query, buttons);
-      buttons.forEach(btn => {
-        if (btn.textContent === currentPage.toString()) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
     });
     return button;
   });
@@ -60,4 +55,17 @@ export async function createPaginationButtons() {
   buttons.push(nextButton);
 
   buttons.forEach(button => paginationContainer.appendChild(button));
+  previousButton.addEventListener('click', () => {
+    if (!previousButton.disabled) {
+      currentPage = Math.max(currentPage - 1, 1);
+      switchPage(currentPage, query, buttons);
+    }
+  });
+
+  nextButton.addEventListener('click', () => {
+    if (!nextButton.disabled) {
+      currentPage = Math.min(currentPage + 1, totalPages);
+      switchPage(currentPage, query, buttons);
+    }
+  });
 }

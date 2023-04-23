@@ -1,5 +1,5 @@
 export function fetchPageNumbers(totalPages, currentPage) {
-  const delta = 4;
+  const delta = 5;
   const range = [];
   for (
     let i = Math.max(2, currentPage - delta);

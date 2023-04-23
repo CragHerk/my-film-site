@@ -4,3 +4,7 @@
   justify-content: center;
   display: flex;
 }
+.pagination__button.active {
+  background-color: yellow;
+  color: black;
+}
