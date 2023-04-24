@@ -1,5 +1,5 @@
 function displayItems(items) {
-  const container = document.querySelector('.movies-container');
+  const container = document.querySelector('.container');
   const screenWidth = window.innerWidth;
 
   container.innerHTML = '';
