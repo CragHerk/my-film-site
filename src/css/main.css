@@ -30,19 +30,21 @@
   line-height: 16px;
   letter-spacing: 0em;
 }
-.movie-item__rating {
-  background-color: #ff6b08;
-  color: #fffefe;
-  width: 36px;
-  height: 16px;
-  border-radius: 5px;
-  display: inline-flex;
-  justify-content: center;
-  margin-left: 5px;
+.movie-item__genres {
+  font-weight: 500;
   font-size: 12px;
+  color: #ff6b08;
+  font-style: normal;
+  margin-right: 3px;
+}
+.movie-item__genres span {
+  margin-right: 3px;
 }
 .movie-item__year {
   color: #ff6b08;
+  font-weight: 500;
+  font-size: 12px;
+  font-style: normal;
 }
 .movie-item__title {
   font-weight: 500;
@@ -70,6 +72,7 @@
 }
 .movie-item__line {
   color: #ff6b08;
+  margin-right: 3px;
 }
 @media (min-width: 768px) {
   .movie-item__poster {
@@ -102,5 +105,8 @@
   .movie-item {
     width: 395px;
     height: 660px;
+  }
+  .movie-item__genres {
+    font-size: 20px;
   }
 }

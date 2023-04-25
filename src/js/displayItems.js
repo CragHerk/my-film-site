@@ -1,4 +1,4 @@
-function displayItems(items) {
+function displayItems(items, genres) {
   const container = document.querySelector('.container');
   const screenWidth = window.innerWidth;
 
@@ -25,6 +25,16 @@ function displayItems(items) {
     const movieTitle = document.createElement('h2');
     movieTitle.classList.add('movie-item__title');
     movieTitle.textContent = item.title;
+    const movieGenres = document.createElement('span');
+    movieGenres.classList.add('movie-item__genres');
+    item.genre_ids.forEach(genreId => {
+      const genre = genres.find(genre => genre.id === genreId);
+      if (genre) {
+        const genreName = document.createElement('span');
+        genreName.textContent = genre.name;
+        movieGenres.appendChild(genreName);
+      }
+    });
 
     const movieLine = document.createElement('span');
     movieLine.classList.add('movie-item__line');
@@ -34,15 +44,16 @@ function displayItems(items) {
     movieYear.classList.add('movie-item__year');
     movieYear.textContent = `${item.release_date.slice(0, 4)}`;
 
-    const movieRating = document.createElement('span');
-    movieRating.classList.add('movie-item__rating');
-    movieRating.textContent = item.vote_average;
+    //const movieRating = document.createElement('span');
+    // movieRating.classList.add('movie-item__rating');
+    // movieRating.textContent = item.vote_average;
 
     movieItem.appendChild(moviePoster);
     movieItem.appendChild(movieTitle);
+    movieItem.appendChild(movieGenres);
     movieItem.appendChild(movieLine);
     movieItem.appendChild(movieYear);
-    movieItem.appendChild(movieRating);
+    //movieItem.appendChild(movieRating);
 
     container.appendChild(movieItem);
   });
